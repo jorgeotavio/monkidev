@@ -56,6 +56,10 @@ const Card = styled.div<Props>`
   &:hover {
     border-color: var(--color-primary);
   }
+
+  @media only screen and (max-width: 600px) {
+    padding: 15px;
+  }
 `;
 
 function RequestJob() {

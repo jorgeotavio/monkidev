@@ -5,7 +5,7 @@ const dark = {
     primary: "#C62E65",
     secundary: "#D63AF9",
 
-    background: "#f5f5f5",
+    background: "#2b2b2b",
     text: "#333",
   },
 };
