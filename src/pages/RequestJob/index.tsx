@@ -1,7 +1,8 @@
 import { useState } from "react";
-import styled, { css } from "styled-components";
-import logo from "./assets/img/logo.png";
-import { smoothScrollTo } from "./utils";
+import styled from "styled-components";
+import logo from "../../assets/img/logotipo.png";
+import Button from "../../components/Button";
+import { smoothScrollTo } from "../../utils";
 
 interface Props {
   selected: boolean;
@@ -57,32 +58,7 @@ const Card = styled.div<Props>`
   }
 `;
 
-interface ButtonProps {
-  primary?: boolean;
-  disabled?: boolean;
-}
-
-const Button = styled.a<ButtonProps>`
-  display: block;
-  border-radius: 5px;
-  padding: 2rem 2rem;
-  margin: 20px 0px;
-  color: white;
-  background: ${(props) =>
-    props.disabled ? "rgb(0,0,0,.2)" : "var(--color-primary)"};
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
-  text-decoration: none;
-  text-align: center;
-  cursor: ${(props) => props.disabled && "not-allowed"};
-  ${(props) =>
-    props.disabled &&
-    css({
-      pointerEvents: "none",
-    })}
-`;
-
-function App() {
+function RequestJob() {
   const [planos] = useState([
     {
       id: 1,
@@ -127,6 +103,7 @@ function App() {
             <img src={logo} alt="logo" />
           </div>
         </div>
+        <div className="logo-text title">Monki Dev</div>
         <div className="title">Selecione um plano</div>
         {planos.map((plan, idx) => (
           <Card
@@ -147,8 +124,12 @@ function App() {
         ))}
         <Button
           id="finish"
-          target="_blank"
-          href={`https://wa.me/5587988589105?text=Olá eu gostaria de um site com o plano: \n ${selected.name}`}
+          onClick={() =>
+            window.open(
+              `https://wa.me/5587988589105?text=Olá eu gostaria de um site com o plano: \n ${selected.name}`,
+              "_blank"
+            )
+          }
           primary={true}
           disabled={selected?.id === 0}
         >
@@ -159,4 +140,4 @@ function App() {
   );
 }
 
-export default App;
+export default RequestJob;
